@@ -6,9 +6,9 @@ export class FossilEntity extends AbstractEntity {
     @Column({ unique: true })
     name: string;
 
-    @Column({ name: 'image_url', default: null, nullable: true })
-    imageUrl: string | null;
-
+    @Column({ name: 'image_url', nullable: true })
+    imageUrl: string;
+    
     @Column({ name: 'sell_price' })
     sellPrice: number;
 }
