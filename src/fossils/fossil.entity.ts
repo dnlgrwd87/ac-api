@@ -8,7 +8,25 @@ export class FossilEntity extends AbstractEntity {
 
     @Column({ name: 'image_url', nullable: true })
     imageUrl: string;
-    
+
+    @Column({ name: 'buy_price' })
+    buyPrice: number;
+
     @Column({ name: 'sell_price' })
     sellPrice: number;
+
+    @Column()
+    color1: string;
+
+    @Column()
+    color2: string;
+
+    @Column()
+    size: string;
+
+    @Column()
+    interactive: boolean;
+
+    @Column({ name: 'in_catalog' })
+    inCatalog: boolean;
 }

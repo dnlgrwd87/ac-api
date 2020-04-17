@@ -19,9 +19,12 @@ export class FossilService {
     _mapToDTO(fossils: FossilEntity[]): FossilDTO[] {
         const fossilDTOs: FossilDTO[] = [];
 
-        fossils.forEach(f => {
-            const { id, name, imageUrl, sellPrice } = f;
-            fossilDTOs.push({ id, name, imageUrl, sellPrice });
+        fossils.forEach(fossil => {
+            const updatedBuyPrice = fossil.buyPrice > 0 ? fossil.buyPrice : 'not for sale';
+            const { createdAt, updatedAt, color1, color2, buyPrice, ...fossilObj } = fossil;
+            const colors = color1 === color2 ? [color1] : [color1, color2];
+
+            fossilDTOs.push({ ...fossilObj, colors, buyPrice: updatedBuyPrice });
         });
 
         return fossilDTOs;
