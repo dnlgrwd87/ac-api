@@ -13,18 +13,18 @@ export class VillagerService {
 
     async getAll(): Promise<VillagerDTO[]> {
         const villagers = await this.villagerRepo.find();
-        return this._mapToDTO(villagers);
+        return villagers.map(this._mapToDTO);
     }
 
-    _mapToDTO(villagers: VillagerEntity[]): VillagerDTO[] {
-        const villagerDTOs: VillagerDTO[] = [];
+    async getById(id: number): Promise<VillagerDTO> {
+        const villager = await this.villagerRepo.findOneOrFail(id);
+        return this._mapToDTO(villager);
+    }
 
-        villagers.forEach(villager => {
-            const { createdAt, updatedAt, style1, style2, ...villagerObj } = villager;
-            const styles = style1 === style2 ? [style1] : [style1, style2];
-            villagerDTOs.push({ ...villagerObj, styles });
-        });
+    _mapToDTO(villager: VillagerEntity): VillagerDTO {
+        const { createdAt, updatedAt, style1, style2, ...villagerObj } = villager;
+        const styles = [style1, style2];
 
-        return villagerDTOs;
+        return { ...villagerObj, styles };
     }
 }

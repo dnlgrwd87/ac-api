@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { VillagerService } from './villager.service';
 
 @Controller('villagers')
@@ -6,7 +6,12 @@ export class VillagerController {
     constructor(private villagerService: VillagerService) {}
 
     @Get()
-    getVillagers() {
+    getAllVillagers() {
         return this.villagerService.getAll();
+    }
+
+    @Get(':id')
+    getVillagerById(@Param('id') id: number) {
+        return this.villagerService.getById(id);
     }
 }

@@ -13,28 +13,19 @@ export class FossilService {
 
     async getAll(): Promise<FossilDTO[]> {
         const fossils = await this.fossilRepo.find();
-        return this._mapToDTO(fossils);
+        return fossils.map(this._mapToDTO);
     }
 
-    _mapToDTO(fossils: FossilEntity[]): FossilDTO[] {
-        const fossilDTOs: FossilDTO[] = [];
+    async getById(id: number): Promise<FossilDTO> {
+        const fossil = await this.fossilRepo.findOneOrFail(id);
+        return this._mapToDTO(fossil);
+    }
 
-        fossils.forEach(fossil => {
-            const {
-                createdAt,
-                updatedAt,
-                color1,
-                color2,
-                buyPrice,
-                internalId,
-                ...fossilObj
-            } = fossil;
-            const colors = [color1, color2];
-            const updatedBuyPrice = buyPrice > 0 ? buyPrice : 'not for sale';
+    _mapToDTO(fossil: FossilEntity): FossilDTO {
+        const { createdAt, updatedAt, color1, color2, buyPrice, internalId, ...fossilObj } = fossil;
+        const colors = [color1, color2];
+        const updatedBuyPrice = buyPrice > 0 ? buyPrice : 'not for sale';
 
-            fossilDTOs.push({ ...fossilObj, buyPrice: updatedBuyPrice, colors });
-        });
-
-        return fossilDTOs;
+        return { ...fossilObj, buyPrice: updatedBuyPrice, colors };
     }
 }
