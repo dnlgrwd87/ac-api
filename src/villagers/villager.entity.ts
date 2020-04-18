@@ -3,7 +3,7 @@ import { Entity, Column } from 'typeorm';
 
 @Entity('villager')
 export class VillagerEntity extends AbstractEntity {
-    @Column()
+    @Column({ unique: true })
     name: string;
 
     @Column({ name: 'image_url', nullable: true })
