@@ -6,6 +6,7 @@ export interface FossilDTO {
     sellPrice: number;
     colors: string[];
     size: string;
+    source: string;
     interactive: boolean;
     inCatalog: boolean;
 }

@@ -20,11 +20,19 @@ export class FossilService {
         const fossilDTOs: FossilDTO[] = [];
 
         fossils.forEach(fossil => {
-            const updatedBuyPrice = fossil.buyPrice > 0 ? fossil.buyPrice : 'not for sale';
-            const { createdAt, updatedAt, color1, color2, buyPrice, ...fossilObj } = fossil;
-            const colors = color1 === color2 ? [color1] : [color1, color2];
+            const {
+                createdAt,
+                updatedAt,
+                color1,
+                color2,
+                buyPrice,
+                internalId,
+                ...fossilObj
+            } = fossil;
+            const colors = [color1, color2];
+            const updatedBuyPrice = buyPrice > 0 ? buyPrice : 'not for sale';
 
-            fossilDTOs.push({ ...fossilObj, colors, buyPrice: updatedBuyPrice });
+            fossilDTOs.push({ ...fossilObj, buyPrice: updatedBuyPrice, colors });
         });
 
         return fossilDTOs;

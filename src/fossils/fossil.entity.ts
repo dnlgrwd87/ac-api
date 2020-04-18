@@ -25,8 +25,14 @@ export class FossilEntity extends AbstractEntity {
     size: string;
 
     @Column()
+    source: string;
+
+    @Column()
     interactive: boolean;
 
     @Column({ name: 'in_catalog' })
     inCatalog: boolean;
+
+    @Column({ name: 'internal_id' })
+    internalId: number;
 }
