@@ -9,4 +9,5 @@ export interface FossilDTO {
     source: string;
     interactive: boolean;
     inCatalog: boolean;
+    canReorder: boolean;
 }

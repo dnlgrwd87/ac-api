@@ -3,6 +3,7 @@ import { DatabaseConnectionService } from './databaseConnection.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { FossilModule } from './fossils/fossil.module';
 import { VillagerModule } from './villagers/villager.module';
+import { BagModule } from './bags/bag.module';
 
 @Module({
     imports: [
@@ -10,7 +11,8 @@ import { VillagerModule } from './villagers/villager.module';
             useClass: DatabaseConnectionService
         }),
         FossilModule,
-        VillagerModule
+        VillagerModule,
+        BagModule
     ]
 })
 export class AppModule {}
