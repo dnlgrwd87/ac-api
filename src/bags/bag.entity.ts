@@ -1,4 +1,4 @@
-import { AbstractEntity } from '../entities/abstract-entity';
+import { AbstractEntity } from '../abstractEntity';
 import { Entity, Column, OneToMany } from 'typeorm';
 import { BagVariationEntity } from './bagVariation.entity';
 

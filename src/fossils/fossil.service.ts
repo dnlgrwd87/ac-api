@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { FossilEntity } from './fossil.entity';
-import { FossilDTO } from './fossilDTO';
+import { FossilDTO } from './fossil.dto';
 
 @Injectable()
 export class FossilService {
@@ -22,7 +22,7 @@ export class FossilService {
     }
 
     _mapToDTO(fossil: FossilEntity): FossilDTO {
-        const { createdAt, updatedAt, color1, color2, buyPrice, internalId, ...fossilObj } = fossil;
+        const { color1, color2, buyPrice, internalId, ...fossilObj } = fossil;
         const colors = [color1, color2];
         const updatedBuyPrice = buyPrice > 0 ? buyPrice : 'not for sale';
 

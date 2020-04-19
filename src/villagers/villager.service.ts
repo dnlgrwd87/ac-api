@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { VillagerEntity } from './villager.entity';
-import { VillagerDTO } from './villagerDTO';
+import { VillagerDTO } from './villager.dto';
 
 @Injectable()
 export class VillagerService {
@@ -22,7 +22,7 @@ export class VillagerService {
     }
 
     _mapToDTO(villager: VillagerEntity): VillagerDTO {
-        const { createdAt, updatedAt, style1, style2, ...villagerObj } = villager;
+        const { style1, style2, ...villagerObj } = villager;
         const styles = [style1, style2];
 
         return { ...villagerObj, styles };
