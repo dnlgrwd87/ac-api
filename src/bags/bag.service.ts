@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { BagEntity } from './bag.entity';
 import { BagVariationEntity } from './bagVariation.entity';
-import { BagDTO, BagVariationDTO } from './bagDTO';
+import { BagDTO, BagVariationDTO } from './bag.dto';
 
 @Injectable()
 export class BagService {
@@ -18,7 +18,7 @@ export class BagService {
     }
 
     _mapToDTO(bag: BagEntity): BagDTO {
-        const { createdAt, updatedAt, buyPrice, variations, ...bagObj } = bag;
+        const { buyPrice, variations, ...bagObj } = bag;
         const variationDTOs = variations.map(this._mapVariationToDTO);
         const updatedBuyPrice = buyPrice > 0 ? buyPrice : 'not for sale';
         
@@ -26,7 +26,7 @@ export class BagService {
     }
 
     _mapVariationToDTO(bagVariation: BagVariationEntity): BagVariationDTO {
-        const { createdAt, updatedAt, color1, color2, ...bagVariationObj } = bagVariation;
+        const { color1, color2, ...bagVariationObj } = bagVariation;
         const colors = [color1, color2];
 
         return { ...bagVariationObj, colors };
