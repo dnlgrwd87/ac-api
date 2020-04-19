@@ -1,13 +1,11 @@
 import { AbstractEntity } from '../entities/abstract-entity';
-import { Entity, Column } from 'typeorm';
+import { Entity, Column, OneToMany } from 'typeorm';
+import { BagVariationEntity } from './bagVariation.entity';
 
-@Entity('fossil')
-export class FossilEntity extends AbstractEntity {
+@Entity('bag')
+export class BagEntity extends AbstractEntity {
     @Column({ unique: true })
     name: string;
-
-    @Column({ name: 'image_url', nullable: true })
-    imageUrl: string;
 
     @Column({ name: 'buy_price' })
     buyPrice: number;
@@ -16,19 +14,19 @@ export class FossilEntity extends AbstractEntity {
     sellPrice: number;
 
     @Column()
-    color1: string;
-
-    @Column()
-    color2: string;
+    diy: boolean;
 
     @Column()
     size: string;
 
     @Column()
-    source: string;
+    style: string;
 
     @Column()
-    interactive: boolean;
+    source: string;
+
+    @Column({ name: 'source_notes' })
+    sourceNotes: string;
 
     @Column({ name: 'in_catalog' })
     inCatalog: boolean;
@@ -36,6 +34,9 @@ export class FossilEntity extends AbstractEntity {
     @Column({ name: 'can_reorder' })
     canReorder: boolean;
 
-    @Column({ name: 'internal_id' })
-    internalId: number;
+    @OneToMany(
+        () => BagVariationEntity,
+        bagVariation => bagVariation.bag
+    )
+    variations: BagVariationEntity[];
 }
