@@ -6,8 +6,8 @@ export class VillagerEntity extends AbstractEntity {
     @Column({ unique: true })
     name: string;
 
-    @Column({ name: 'image_url', nullable: true })
-    imageUrl: string;
+    @Column({ nullable: true })
+    image: string;
 
     @Column()
     species: string;

@@ -1,7 +1,7 @@
 export interface FossilDTO {
     id: number;
     name: string;
-    imageUrl: string;
+    image: string;
     buyPrice: number | string;
     sellPrice: number;
     colors: string[];

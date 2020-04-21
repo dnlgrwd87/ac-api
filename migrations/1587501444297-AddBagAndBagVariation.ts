@@ -1,11 +1,11 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
 
-export class AddBagAndBagVariation1587313948275 implements MigrationInterface {
-    name = 'AddBagAndBagVariation1587313948275';
+export class AddBagAndBagVariation1587501444297 implements MigrationInterface {
+    name = 'AddBagAndBagVariation1587501444297';
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.query(
-            `CREATE TABLE "bag_variation" ("id" SERIAL NOT NULL, "created_at" TIMESTAMP NOT NULL DEFAULT now(), "updated_at" TIMESTAMP NOT NULL DEFAULT now(), "image_url" character varying, "body_color" character varying NOT NULL, "color1" character varying NOT NULL, "color2" character varying NOT NULL, "internal_id" integer NOT NULL, "bag_id" integer NOT NULL, CONSTRAINT "PK_a8ff25d7e124f5543e94e8e93f9" PRIMARY KEY ("id"))`,
+            `CREATE TABLE "bag_variation" ("id" SERIAL NOT NULL, "created_at" TIMESTAMP NOT NULL DEFAULT now(), "updated_at" TIMESTAMP NOT NULL DEFAULT now(), "image" character varying, "body_color" character varying NOT NULL, "color1" character varying NOT NULL, "color2" character varying NOT NULL, "internal_id" integer NOT NULL, "bag_id" integer NOT NULL, CONSTRAINT "PK_a8ff25d7e124f5543e94e8e93f9" PRIMARY KEY ("id"))`,
             undefined
         );
         await queryRunner.query(

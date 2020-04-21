@@ -4,8 +4,8 @@ import { BagEntity } from './bag.entity';
 
 @Entity('bag_variation')
 export class BagVariationEntity extends AbstractEntity {
-    @Column({ name: 'image_url', nullable: true })
-    imageUrl: string;
+    @Column({ nullable: true })
+    image: string;
 
     @Column({ name: 'body_color' })
     bodyColor: string;
