@@ -16,5 +16,4 @@ export interface BagVariationDTO {
     id: number;
     image: string;
     colors: string[];
-    internalId: number;
 }

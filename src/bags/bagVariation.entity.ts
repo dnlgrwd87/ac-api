@@ -16,8 +16,8 @@ export class BagVariationEntity extends AbstractEntity {
     @Column()
     color2: string;
 
-    @Column({ name: 'internal_id' })
-    internalId: number;
+    @Column({ name: 'spreadsheet_id', unique: true, select: false })
+    spreadsheetId: string;
 
     @ManyToOne(
         () => BagEntity,

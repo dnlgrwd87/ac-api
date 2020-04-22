@@ -22,7 +22,7 @@ export class FossilService {
     }
 
     _mapToDTO(fossil: FossilEntity): FossilDTO {
-        const { color1, color2, buyPrice, internalId, ...fossilObj } = fossil;
+        const { color1, color2, buyPrice, ...fossilObj } = fossil;
         const colors = [color1, color2];
         const updatedBuyPrice = buyPrice > 0 ? buyPrice : 'not for sale';
 
