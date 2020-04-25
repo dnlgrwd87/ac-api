@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { BagEntity } from './bag.entity';
-import { BagDTO, BagVariationDTO } from './bag.dto';
 
 @Injectable()
 export class BagService {
@@ -12,6 +11,6 @@ export class BagService {
     ) {}
 
     async getAll(): Promise<BagEntity[]> {
-        return this.bagRepo.find();
+        return this.bagRepo.find({ order: { id: 'ASC' } });
     }
 }

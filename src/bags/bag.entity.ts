@@ -1,5 +1,5 @@
 import { AbstractEntity } from '../abstractEntity';
-import { Entity, Column, OneToMany } from 'typeorm';
+import { Entity, Column } from 'typeorm';
 
 @Entity('bag')
 export class BagEntity extends AbstractEntity {
@@ -46,7 +46,7 @@ export class BagEntity extends AbstractEntity {
     sourceNotes: string;
 
     @Column({ name: 'seasonal_availability' })
-    seasonalAvailabilty: string;
+    seasonalAvailability: string;
 
     @Column({ name: 'in_catalog' })
     inCatalog: boolean;
