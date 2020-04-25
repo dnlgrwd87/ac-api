@@ -7,4 +7,5 @@ export interface VillagerDTO {
     birthday: string;
     catchphrase: string;
     styles: string[];
+    colors: string[];
 }

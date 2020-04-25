@@ -1,17 +1,34 @@
 import { AbstractEntity } from '../abstractEntity';
 import { Entity, Column, OneToMany } from 'typeorm';
-import { BagVariationEntity } from './bagVariation.entity';
 
 @Entity('bag')
 export class BagEntity extends AbstractEntity {
-    @Column({ unique: true })
+    @Column()
     name: string;
+
+    @Column({ nullable: true })
+    image: string;
+
+    @Column({ name: 'storage_image', nullable: true })
+    storageImage: string;
 
     @Column({ name: 'buy_price' })
     buyPrice: number;
 
     @Column({ name: 'sell_price' })
     sellPrice: number;
+
+    @Column({ name: 'body_color' })
+    bodyColor: string;
+
+    @Column({ name: 'label_themes' })
+    themes: string;
+
+    @Column()
+    color1: string;
+
+    @Column()
+    color2: string;
 
     @Column()
     diy: boolean;
@@ -28,15 +45,15 @@ export class BagEntity extends AbstractEntity {
     @Column({ name: 'source_notes' })
     sourceNotes: string;
 
+    @Column({ name: 'seasonal_availability' })
+    seasonalAvailabilty: string;
+
     @Column({ name: 'in_catalog' })
     inCatalog: boolean;
 
     @Column({ name: 'can_reorder' })
     canReorder: boolean;
 
-    @OneToMany(
-        () => BagVariationEntity,
-        bagVariation => bagVariation.bag
-    )
-    variations: BagVariationEntity[];
+    @Column({ name: 'spreadsheet_id', unique: true, select: false })
+    spreadsheetId: string;
 }

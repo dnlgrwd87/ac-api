@@ -12,7 +12,7 @@ export class FossilService {
     ) {}
 
     async getAll(): Promise<FossilDTO[]> {
-        const fossils = await this.fossilRepo.find();
+        const fossils = await this.fossilRepo.find({ order: { id: 'ASC' } });
         return fossils.map(this._mapToDTO);
     }
 

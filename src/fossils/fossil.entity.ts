@@ -36,6 +36,9 @@ export class FossilEntity extends AbstractEntity {
     @Column({ name: 'can_reorder' })
     canReorder: boolean;
 
+    @Column({ nullable: true })
+    description: string;
+
     @Column({ name: 'spreadsheet_id', unique: true, select: false })
     spreadsheetId: string;
 }

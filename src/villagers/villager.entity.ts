@@ -30,6 +30,12 @@ export class VillagerEntity extends AbstractEntity {
     @Column()
     style2: string;
 
+    @Column()
+    color1: string;
+
+    @Column()
+    color2: string;
+
     @Column({ name: 'spreadsheet_id', unique: true, select: false })
     spreadsheetId: string;
 }

@@ -1,7 +1,10 @@
 export interface BagDTO {
     name: string;
-    buyPrice: number | string;
+    image: string;
+    storageImage: string;
+    buyPrice: number;
     sellPrice: number;
+    bodyColor: string;
     diy: boolean;
     size: string;
     style: string;
@@ -9,7 +12,6 @@ export interface BagDTO {
     sourceNotes: string;
     inCatalog: boolean;
     canReorder: boolean;
-    variations: BagVariationDTO[];
 }
 
 export interface BagVariationDTO {

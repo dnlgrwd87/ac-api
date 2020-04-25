@@ -12,7 +12,7 @@ export class VillagerService {
     ) {}
 
     async getAll(): Promise<VillagerDTO[]> {
-        const villagers = await this.villagerRepo.find();
+        const villagers = await this.villagerRepo.find({ order: { id: 'ASC' } });
         return villagers.map(this._mapToDTO);
     }
 
@@ -22,9 +22,10 @@ export class VillagerService {
     }
 
     _mapToDTO(villager: VillagerEntity): VillagerDTO {
-        const { style1, style2, ...villagerObj } = villager;
+        const { style1, style2, color1, color2, ...villagerObj } = villager;
         const styles = [style1, style2];
+        const colors = [color1, color2];
 
-        return { ...villagerObj, styles };
+        return { ...villagerObj, styles, colors };
     }
 }
