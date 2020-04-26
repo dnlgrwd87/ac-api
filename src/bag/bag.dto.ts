@@ -1,4 +1,5 @@
-export interface BagDTO {
+export class BagDTO {
+    id: number;
     name: string;
     image: string;
     storageImage: string;
@@ -9,13 +10,14 @@ export interface BagDTO {
     size: string;
     style: string;
     source: string;
+    colors: string[];
     sourceNotes: string;
     inCatalog: boolean;
     canReorder: boolean;
 }
 
-export interface BagVariationDTO {
-    id: number;
-    image: string;
-    colors: string[];
-}
+// export interface BagVariationDTO {
+//     id: number;
+//     image: string;
+//     colors: string[];
+// }

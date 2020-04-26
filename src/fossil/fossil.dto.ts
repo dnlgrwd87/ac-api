@@ -1,8 +1,8 @@
-export interface FossilDTO {
+export class FossilDTO {
     id: number;
     name: string;
     image: string;
-    buyPrice: number | string;
+    buyPrice: number | null;
     sellPrice: number;
     colors: string[];
     size: string;

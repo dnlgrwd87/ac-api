@@ -1,4 +1,4 @@
-export interface VillagerDTO {
+export class VillagerDTO {
     id: number;
     name: string;
     image: string;

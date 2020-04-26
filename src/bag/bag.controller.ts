@@ -1,12 +1,17 @@
 import { Controller, Get } from '@nestjs/common';
 import { BagService } from './bag.service';
+import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { BagDTO } from './bag.dto';
 
-@Controller('bag')
+@ApiTags('Bags')
+@Controller('bags')
 export class BagController {
-    constructor(private bagService: BagService) {}
+    constructor(private bagService: BagService) {
+    }
 
     @Get()
-    getAllFossils() {
+    @ApiOkResponse({type: BagDTO})
+    getAllBags() {
         return this.bagService.getAll();
     }
 }
