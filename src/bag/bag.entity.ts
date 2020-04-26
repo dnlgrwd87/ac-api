@@ -1,19 +1,28 @@
-import { AbstractEntity } from '../abstractEntity';
+import { AbstractEntity } from '../abstract-entity';
 import { Entity, Column } from 'typeorm';
 
-@Entity('fossil')
-export class FossilEntity extends AbstractEntity {
-    @Column({ unique: true })
+@Entity('bag')
+export class BagEntity extends AbstractEntity {
+    @Column()
     name: string;
 
     @Column({ nullable: true })
     image: string;
+
+    @Column({ name: 'storage_image', nullable: true })
+    storageImage: string;
 
     @Column({ name: 'buy_price' })
     buyPrice: number;
 
     @Column({ name: 'sell_price' })
     sellPrice: number;
+
+    @Column({ name: 'body_color' })
+    bodyColor: string;
+
+    @Column({ name: 'label_themes' })
+    themes: string;
 
     @Column()
     color1: string;
@@ -22,22 +31,28 @@ export class FossilEntity extends AbstractEntity {
     color2: string;
 
     @Column()
+    diy: boolean;
+
+    @Column()
     size: string;
+
+    @Column()
+    style: string;
 
     @Column()
     source: string;
 
-    @Column()
-    interactive: boolean;
+    @Column({ name: 'source_notes' })
+    sourceNotes: string;
+
+    @Column({ name: 'seasonal_availability' })
+    seasonalAvailability: string;
 
     @Column({ name: 'in_catalog' })
     inCatalog: boolean;
 
     @Column({ name: 'can_reorder' })
     canReorder: boolean;
-
-    @Column({ nullable: true })
-    description: string;
 
     @Column({ name: 'spreadsheet_id', unique: true, select: false })
     spreadsheetId: string;

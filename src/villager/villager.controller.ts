@@ -1,7 +1,7 @@
 import { Controller, Get, Param } from '@nestjs/common';
 import { VillagerService } from './villager.service';
 
-@Controller('villagers')
+@Controller('villager')
 export class VillagerController {
     constructor(private villagerService: VillagerService) {}
 

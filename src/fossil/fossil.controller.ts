@@ -1,7 +1,7 @@
 import { Controller, Get, Param } from '@nestjs/common';
 import { FossilService } from './fossil.service';
 
-@Controller('fossils')
+@Controller('fossil')
 export class FossilController {
     constructor(private fossilService: FossilService) {}
 

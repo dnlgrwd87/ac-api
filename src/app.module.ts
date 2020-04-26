@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { DatabaseConnectionService } from './databaseConnection.service';
+import { DatabaseConnectionService } from './database-connection.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { FossilModule } from './fossils/fossil.module';
-import { VillagerModule } from './villagers/villager.module';
-import { BagModule } from './bags/bag.module';
+import { FossilModule } from './fossil/fossil.module';
+import { VillagerModule } from './villager/villager.module';
+import { BagModule } from './bag/bag.module';
 
 @Module({
     imports: [
