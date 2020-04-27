@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { FossilModule } from './fossil/fossil.module';
 import { VillagerModule } from './villager/villager.module';
 import { BagModule } from './bag/bag.module';
+import { BugModule } from './bug/bug.module';
 
 @Module({
     imports: [
@@ -12,7 +13,8 @@ import { BagModule } from './bag/bag.module';
         }),
         FossilModule,
         VillagerModule,
-        BagModule
+        BagModule,
+        BugModule
     ]
 })
 export class AppModule {}
