@@ -6,6 +6,7 @@ import { VillagerModule } from './villager/villager.module';
 import { BagModule } from './bag/bag.module';
 import { BugModule } from './bug/bug.module';
 import { FishModule } from './fish/fish.module';
+import { RecipeModule } from './recipe/recipe.module';
 
 @Module({
     imports: [
@@ -16,7 +17,8 @@ import { FishModule } from './fish/fish.module';
         VillagerModule,
         BagModule,
         BugModule,
-        FishModule
+        FishModule,
+        RecipeModule
     ]
 })
 export class AppModule {}
