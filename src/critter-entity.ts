@@ -14,6 +14,12 @@ export class CritterEntity extends AbstractEntity {
     @Column({name: 'icon_image', nullable: true})
     iconImage: string;
 
+    @Column({name: 'museum_description', nullable: true})
+    museumDescription: string;
+
+    @Column({name: 'catch_phrase', nullable: true})
+    catchPhrase: string;
+
     @Column({name: 'sell_price'})
     sellPrice: number;
 
@@ -26,8 +32,8 @@ export class CritterEntity extends AbstractEntity {
     @Column()
     color2: string;
 
-    @Column({nullable: true})
-    description: string;
+    @Column()
+    rarity: string;
 
     @Column({name: 'active_hours', type: 'jsonb'})
     activeHours: any;

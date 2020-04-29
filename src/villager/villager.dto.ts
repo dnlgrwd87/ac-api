@@ -1,7 +1,8 @@
 export class VillagerDTO {
     id: number;
     name: string;
-    image: string;
+    iconImage: string;
+    houseImage: string;
     species: string;
     personality: string;
     birthday: string;

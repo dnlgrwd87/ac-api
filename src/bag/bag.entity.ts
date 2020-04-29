@@ -21,8 +21,8 @@ export class BagEntity extends AbstractEntity {
     @Column({ name: 'body_color' })
     bodyColor: string;
 
-    @Column({ name: 'label_themes' })
-    themes: string;
+    @Column({ name: 'label_themes', type: 'jsonb' })
+    themes: any;
 
     @Column()
     color1: string;

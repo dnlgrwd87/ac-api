@@ -1,0 +1,14 @@
+import { MigrationInterface, QueryRunner } from 'typeorm';
+
+export class AddVillager1588160861237 implements MigrationInterface {
+    name = 'AddVillager1588160861237';
+
+    public async up(queryRunner: QueryRunner): Promise<void> {
+        await queryRunner.query(`CREATE TABLE "villager" ("id" SERIAL NOT NULL, "created_at" TIMESTAMP NOT NULL DEFAULT now(), "updated_at" TIMESTAMP NOT NULL DEFAULT now(), "name" character varying NOT NULL, "icon_image" character varying, "house_image" character varying, "species" character varying NOT NULL, "gender" character varying NOT NULL, "personality" character varying NOT NULL, "birthday" character varying NOT NULL, "catchphrase" character varying NOT NULL, "style1" character varying NOT NULL, "style2" character varying NOT NULL, "color1" character varying NOT NULL, "color2" character varying NOT NULL, "spreadsheet_id" character varying NOT NULL, CONSTRAINT "UQ_d24716150b8017e62c52eaabd53" UNIQUE ("name"), CONSTRAINT "UQ_e3b76abd0e46c561d25ca82e838" UNIQUE ("spreadsheet_id"), CONSTRAINT "PK_9d754f443230576b94cdacbab94" PRIMARY KEY ("id"))`, undefined);
+    }
+
+    public async down(queryRunner: QueryRunner): Promise<void> {
+        await queryRunner.query(`DROP TABLE "recipe"`, undefined);
+    }
+
+}
