@@ -2,7 +2,7 @@ import { Controller, Get, Param } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 
 import { FishService } from './fish.service';
-import { FishEntity } from './fish.entity';
+import { FishDTO } from './fish.dto';
 
 @ApiTags('Fish')
 @Controller('fish')
@@ -11,13 +11,13 @@ export class FishController {
     }
 
     @Get()
-    @ApiOkResponse({type: [FishEntity]})
+    @ApiOkResponse({type: [FishDTO]})
     getAllBugs() {
         return this.fishService.getAll();
     }
 
     @Get(':id')
-    @ApiOkResponse({type: FishEntity})
+    @ApiOkResponse({type: FishDTO})
     getBugbyId(@Param('id') id: number) {
         return this.fishService.getById(id);
     }

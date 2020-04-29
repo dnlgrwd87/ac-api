@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { FossilEntity } from './fossil.entity';
@@ -13,15 +13,15 @@ export class FossilService {
 
     async getAll(): Promise<FossilDTO[]> {
         const fossils = await this.fossilRepo.find({order: {id: 'ASC'}});
-        return fossils.map(this._mapToDTO);
+        return fossils.map(this.mapToDTO);
     }
 
     async getById(id: number): Promise<FossilDTO> {
         const fossil = await this.fossilRepo.findOneOrFail(id);
-        return this._mapToDTO(fossil);
+        return this.mapToDTO(fossil);
     }
 
-    _mapToDTO(fossil: FossilEntity): FossilDTO {
+    private mapToDTO(fossil: FossilEntity): FossilDTO {
         const {color1, color2, buyPrice, ...fossilObj} = fossil;
         const colors = [color1, color2];
         const updatedBuyPrice = buyPrice > 0 ? buyPrice : null;

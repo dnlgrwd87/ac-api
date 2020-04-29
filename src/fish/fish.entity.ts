@@ -1,5 +1,5 @@
 import { Column, Entity } from 'typeorm';
-import { CritterEntity } from '../critter-entity';
+import { CritterEntity } from '../base-critter/critter-entity';
 
 @Entity('fish')
 export class FishEntity extends CritterEntity {
