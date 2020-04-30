@@ -10,7 +10,6 @@ export class CritterDTO {
     obtainedFrom: string;
     colors: string[];
     rarity: string;
-    activeHours: any;
-    activeMonthsNorth: any;
+    activeMonths: { north: number[], south: number[] };
+    activeHours: any[];
 }
-

@@ -35,13 +35,12 @@ export class CritterEntity extends AbstractEntity {
     @Column()
     rarity: string;
 
-    @Column({name: 'active_hours', type: 'jsonb'})
-    activeHours: any;
-
     @Column({name: 'active_months', type: 'jsonb'})
-    activeMonthsNorth: any;
+    activeMonths: any;
+
+    @Column({name: 'active_hours', type: 'jsonb'})
+    activeHours: any[];
 
     @Column({name: 'spreadsheet_id', unique: true, select: false})
     spreadsheetId: string;
-
 }

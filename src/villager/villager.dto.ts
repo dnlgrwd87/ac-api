@@ -3,7 +3,7 @@ export class VillagerDTO {
     name: string;
     iconImage: string;
     houseImage: string;
-    species: string;
+    species: boolean;
     personality: string;
     birthday: string;
     catchphrase: string;

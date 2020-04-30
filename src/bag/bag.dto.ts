@@ -6,6 +6,7 @@ export class BagDTO {
     buyPrice: number;
     sellPrice: number;
     bodyColor: string;
+    labelThemes: string[];
     diy: boolean;
     size: string;
     style: string;

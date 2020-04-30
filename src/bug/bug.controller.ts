@@ -1,5 +1,5 @@
 import { Controller, Get, Param } from '@nestjs/common';
-import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { ApiNotFoundResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 
 import { BugService } from './bug.service';
 import { BugDTO } from './bug.dto';
@@ -12,12 +12,14 @@ export class BugController {
 
     @Get()
     @ApiOkResponse({type: [BugDTO]})
+    @ApiNotFoundResponse({description: 'No data was found'})
     getAllBugs() {
         return this.bugService.getAll();
     }
 
     @Get(':id')
     @ApiOkResponse({type: BugDTO})
+    @ApiNotFoundResponse({description: 'No data was found'})
     getBugbyId(@Param('id') id: number) {
         return this.bugService.getById(id);
     }
