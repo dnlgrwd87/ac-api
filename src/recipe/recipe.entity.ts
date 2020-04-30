@@ -2,12 +2,15 @@ import { AbstractEntity } from '../abstract-entity';
 import { Column, Entity } from 'typeorm';
 
 @Entity('recipe')
-export class BagEntity extends AbstractEntity {
+export class RecipeEntity extends AbstractEntity {
     @Column({unique: true})
     name: string;
 
     @Column()
     category: string;
+
+    @Column({type: 'jsonb'})
+    materials: any[];
 
     @Column()
     source: string;

@@ -12,7 +12,7 @@ export class BagService {
     ) {}
 
     async getAll(): Promise<BagDTO[]> {
-        const bags = await this.bagRepo.find({ order: { id: 'ASC' } });
+        const bags = await this.bagRepo.find({order: {id: 'ASC'}});
         return bags.map(this.mapToDTO);
     }
 

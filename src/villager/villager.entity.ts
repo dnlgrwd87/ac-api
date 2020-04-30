@@ -13,7 +13,7 @@ export class VillagerEntity extends AbstractEntity {
     houseImage: string;
 
     @Column()
-    species: boolean;
+    species: string;
 
     @Column()
     gender: string;
