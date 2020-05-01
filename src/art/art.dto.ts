@@ -10,6 +10,8 @@ export class ArtDTO {
     sellPrice: number;
     colors: string[];
     hhaConcepts: string[];
+    hhaSeries: string | null;
+    hhaSet: string | null;
     size: string;
     source: string;
     sourceNotes: string;
