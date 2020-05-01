@@ -6,3 +6,8 @@ export class RecipeDTO {
     sourceNotes: string;
     materials: any[];
 }
+
+export class RecipeMaterial {
+    name: string;
+    amount: number;
+}
