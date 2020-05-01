@@ -1,19 +1,9 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
-import { ApiNotFoundResponse, ApiOkResponse } from '@nestjs/swagger';
-import { RecipeDTO } from './recipe.dto';
+import { BadRequestException, Body, Controller, Get, HttpCode, Param, Post } from '@nestjs/common';
+import { ApiBody, ApiNotFoundResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { RecipeDTO, RecipeMaterial } from './recipe.dto';
 import { RecipeService } from './recipe.service';
-import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
-export class Material {
-    @IsNotEmpty()
-    @IsString()
-    name: string;
-
-    @IsNotEmpty()
-    @IsNumber()
-    amount: number;
-}
-
+@ApiTags('Recipes')
 @Controller('recipes')
 export class RecipeController {
     constructor(private recipeService: RecipeService) {
@@ -34,8 +24,20 @@ export class RecipeController {
     }
 
     @Post()
-    @ApiOkResponse({type: RecipeDTO})
-    calculatePossibleRecipes(@Body('materials') materialList: Material[]) {
+    @HttpCode(200)
+    @ApiBody({type: [RecipeMaterial]})
+    @ApiOkResponse({type: [RecipeDTO]})
+    calculatePossibleRecipes(@Body() materialList: RecipeMaterial[]) {
+        if (!this.isValidMaterial(materialList)) throw new BadRequestException('Provided materials are not in the correct format');
         return this.recipeService.getPossibleRecipes(materialList);
+    }
+
+    private isValidMaterial(materials: RecipeMaterial[]) {
+        for (const m of materials) {
+            if (typeof (m as RecipeMaterial).amount !== 'number' || typeof (m as RecipeMaterial).name !== 'string') {
+                return false;
+            }
+        }
+        return true;
     }
 }

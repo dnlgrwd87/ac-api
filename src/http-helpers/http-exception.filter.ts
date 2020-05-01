@@ -1,14 +1,21 @@
-import { ExceptionFilter, Catch, ArgumentsHost } from '@nestjs/common';
+import { ArgumentsHost, Catch, ExceptionFilter, HttpException } from '@nestjs/common';
 import { EntityNotFoundError } from 'typeorm/error/EntityNotFoundError';
 
 import { Response } from 'express';
 
-@Catch(EntityNotFoundError)
+@Catch(EntityNotFoundError, Error)
 export class HttpExceptionFilter implements ExceptionFilter {
-    catch(exception: EntityNotFoundError, host: ArgumentsHost) {
+    catch(exception: HttpException, host: ArgumentsHost) {
         const ctx = host.switchToHttp();
         const response = ctx.getResponse<Response>();
 
+        if (exception.getStatus() === 400) {
+            return response
+                .status(400)
+                .json({
+                    message: 'Please provide a name and amount for each material',
+                });
+        }
 
         response
             .status(404)

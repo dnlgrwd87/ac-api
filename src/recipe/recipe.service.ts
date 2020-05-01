@@ -22,7 +22,7 @@ export class RecipeService {
         return this.mapToDTO(recipe);
     }
 
-    async getPossibleRecipes(materialList: RecipeMaterial[]): Promise<any[]> {
+    async getPossibleRecipes(materialList: RecipeMaterial[]): Promise<RecipeDTO[]> {
         const allRecipes = await this.recipeRepo.find();
         const canMake = [];
 
@@ -31,7 +31,7 @@ export class RecipeService {
                 const foundMaterial = materialList.find(m => m.name.toLowerCase() === recipeMaterial.name.toLowerCase());
                 if (!foundMaterial || (foundMaterial && foundMaterial.amount < recipeMaterial.amount)) break;
                 if (index === recipe.materials.length - 1) {
-                    canMake.push({name: recipe.name, materials: recipe.materials});
+                    canMake.push(recipe);
                 }
             }
         }

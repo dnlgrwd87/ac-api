@@ -4,7 +4,7 @@ export class RecipeDTO {
     category: string;
     source: string;
     sourceNotes: string;
-    materials: any[];
+    materials: RecipeMaterial[];
 }
 
 export class RecipeMaterial {
