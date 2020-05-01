@@ -7,6 +7,7 @@ import { BagModule } from './bag/bag.module';
 import { BugModule } from './bug/bug.module';
 import { FishModule } from './fish/fish.module';
 import { RecipeModule } from './recipe/recipe.module';
+import { ArtModule } from './art/art.module';
 
 @Module({
     imports: [
@@ -18,7 +19,9 @@ import { RecipeModule } from './recipe/recipe.module';
         BagModule,
         BugModule,
         FishModule,
-        RecipeModule
+        RecipeModule,
+        ArtModule
     ]
 })
-export class AppModule {}
+export class AppModule {
+}
